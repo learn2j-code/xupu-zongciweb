@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjp.mapper.MVideoMapper" >
+  <resultMap id="BaseResultMap" type="com.bjp.pojo.MVideo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="video_title" property="videoTitle" jdbcType="VARCHAR" />
+    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+    <result column="video_address" property="videoAddress" jdbcType="VARCHAR" />
+    <result column="view_num" property="viewNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="video_intro" property="videoIntro" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.bjp.pojo.MVideo" extends="BaseResultMap" >
+    <result column="video_detail" property="videoDetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, video_title, keywords, video_address, view_num, create_time, update_time, video_intro
+  </sql>
+  <sql id="Blob_Column_List" >
+    video_detail
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.bjp.pojo.MVideoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from m_video
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bjp.pojo.MVideoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from m_video
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from m_video
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_video
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bjp.pojo.MVideo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into m_video (video_title, keywords, video_address, 
+      view_num, create_time, update_time, 
+      video_intro, video_detail)
+    values (#{videoTitle,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{videoAddress,jdbcType=VARCHAR}, 
+      #{viewNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{videoIntro,jdbcType=VARCHAR}, #{videoDetail,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bjp.pojo.MVideo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into m_video
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="videoTitle != null" >
+        video_title,
+      </if>
+      <if test="keywords != null" >
+        keywords,
+      </if>
+      <if test="videoAddress != null" >
+        video_address,
+      </if>
+      <if test="viewNum != null" >
+        view_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="videoIntro != null" >
+        video_intro,
+      </if>
+      <if test="videoDetail != null" >
+        video_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="videoTitle != null" >
+        #{videoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="videoAddress != null" >
+        #{videoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="viewNum != null" >
+        #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoIntro != null" >
+        #{videoIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="videoDetail != null" >
+        #{videoDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjp.pojo.MVideo" >
+    update m_video
+    <set >
+      <if test="videoTitle != null" >
+        video_title = #{videoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="videoAddress != null" >
+        video_address = #{videoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="viewNum != null" >
+        view_num = #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoIntro != null" >
+        video_intro = #{videoIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="videoDetail != null" >
+        video_detail = #{videoDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bjp.pojo.MVideo" >
+    update m_video
+    set video_title = #{videoTitle,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      video_address = #{videoAddress,jdbcType=VARCHAR},
+      view_num = #{viewNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      video_intro = #{videoIntro,jdbcType=VARCHAR},
+      video_detail = #{videoDetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjp.pojo.MVideo" >
+    update m_video
+    set video_title = #{videoTitle,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      video_address = #{videoAddress,jdbcType=VARCHAR},
+      view_num = #{viewNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      video_intro = #{videoIntro,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

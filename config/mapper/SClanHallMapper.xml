@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjp.mapper.SClanHallMapper" >
+  <resultMap id="BaseResultMap" type="com.bjp.pojo.SClanHall" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="name_of_a_hall" property="nameOfAHall" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="fulladdress" property="fulladdress" jdbcType="VARCHAR" />
+    <result column="coordinate" property="coordinate" jdbcType="VARCHAR" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
+    <result column="recommend" property="recommend" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="del_flg" property="delFlg" jdbcType="INTEGER" />
+    <result column="def1" property="def1" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="cover_image" property="coverImage" jdbcType="VARCHAR" />
+    <result column="protected_flag" property="protectedFlag" jdbcType="INTEGER" />
+    <result column="cover_image_thumb" property="coverImageThumb" jdbcType="VARCHAR" />
+    <result column="def2" property="def2" jdbcType="VARCHAR" />
+    <result column="surname" property="surname" jdbcType="VARCHAR" />
+    <result column="review" property="review" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.bjp.pojo.SClanHall" extends="BaseResultMap" >
+    <result column="details" property="details" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, name_of_a_hall, address, fulladdress, coordinate, contacts, tel, synopsis, 
+    recommend, create_time, update_time, del_flg, def1, introduction, cover_image, protected_flag, 
+    cover_image_thumb, def2, surname, review, nickname
+  </sql>
+  <sql id="Blob_Column_List" >
+    details
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.bjp.pojo.SClanHallExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_clan_hall
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bjp.pojo.SClanHallExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from s_clan_hall
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_clan_hall
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_clan_hall
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bjp.pojo.SClanHall" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_clan_hall (name, name_of_a_hall, address, 
+      fulladdress, coordinate, contacts, 
+      tel, synopsis, recommend, 
+      create_time, update_time, del_flg, 
+      def1, introduction, cover_image, 
+      protected_flag, cover_image_thumb, def2, 
+      surname, review, nickname, 
+      details)
+    values (#{name,jdbcType=VARCHAR}, #{nameOfAHall,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{fulladdress,jdbcType=VARCHAR}, #{coordinate,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{synopsis,jdbcType=VARCHAR}, #{recommend,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delFlg,jdbcType=INTEGER}, 
+      #{def1,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{coverImage,jdbcType=VARCHAR}, 
+      #{protectedFlag,jdbcType=INTEGER}, #{coverImageThumb,jdbcType=VARCHAR}, #{def2,jdbcType=VARCHAR}, 
+      #{surname,jdbcType=VARCHAR}, #{review,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
+      #{details,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bjp.pojo.SClanHall" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_clan_hall
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nameOfAHall != null" >
+        name_of_a_hall,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="fulladdress != null" >
+        fulladdress,
+      </if>
+      <if test="coordinate != null" >
+        coordinate,
+      </if>
+      <if test="contacts != null" >
+        contacts,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="synopsis != null" >
+        synopsis,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="delFlg != null" >
+        del_flg,
+      </if>
+      <if test="def1 != null" >
+        def1,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="coverImage != null" >
+        cover_image,
+      </if>
+      <if test="protectedFlag != null" >
+        protected_flag,
+      </if>
+      <if test="coverImageThumb != null" >
+        cover_image_thumb,
+      </if>
+      <if test="def2 != null" >
+        def2,
+      </if>
+      <if test="surname != null" >
+        surname,
+      </if>
+      <if test="review != null" >
+        review,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="details != null" >
+        details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameOfAHall != null" >
+        #{nameOfAHall,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="fulladdress != null" >
+        #{fulladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="coordinate != null" >
+        #{coordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null" >
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        #{synopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlg != null" >
+        #{delFlg,jdbcType=INTEGER},
+      </if>
+      <if test="def1 != null" >
+        #{def1,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="coverImage != null" >
+        #{coverImage,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedFlag != null" >
+        #{protectedFlag,jdbcType=INTEGER},
+      </if>
+      <if test="coverImageThumb != null" >
+        #{coverImageThumb,jdbcType=VARCHAR},
+      </if>
+      <if test="def2 != null" >
+        #{def2,jdbcType=VARCHAR},
+      </if>
+      <if test="surname != null" >
+        #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        #{review,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjp.pojo.SClanHall" >
+    update s_clan_hall
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameOfAHall != null" >
+        name_of_a_hall = #{nameOfAHall,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="fulladdress != null" >
+        fulladdress = #{fulladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="coordinate != null" >
+        coordinate = #{coordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null" >
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        synopsis = #{synopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlg != null" >
+        del_flg = #{delFlg,jdbcType=INTEGER},
+      </if>
+      <if test="def1 != null" >
+        def1 = #{def1,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="coverImage != null" >
+        cover_image = #{coverImage,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedFlag != null" >
+        protected_flag = #{protectedFlag,jdbcType=INTEGER},
+      </if>
+      <if test="coverImageThumb != null" >
+        cover_image_thumb = #{coverImageThumb,jdbcType=VARCHAR},
+      </if>
+      <if test="def2 != null" >
+        def2 = #{def2,jdbcType=VARCHAR},
+      </if>
+      <if test="surname != null" >
+        surname = #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        review = #{review,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bjp.pojo.SClanHall" >
+    update s_clan_hall
+    set name = #{name,jdbcType=VARCHAR},
+      name_of_a_hall = #{nameOfAHall,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      fulladdress = #{fulladdress,jdbcType=VARCHAR},
+      coordinate = #{coordinate,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      synopsis = #{synopsis,jdbcType=VARCHAR},
+      recommend = #{recommend,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_flg = #{delFlg,jdbcType=INTEGER},
+      def1 = #{def1,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      cover_image = #{coverImage,jdbcType=VARCHAR},
+      protected_flag = #{protectedFlag,jdbcType=INTEGER},
+      cover_image_thumb = #{coverImageThumb,jdbcType=VARCHAR},
+      def2 = #{def2,jdbcType=VARCHAR},
+      surname = #{surname,jdbcType=VARCHAR},
+      review = #{review,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      details = #{details,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjp.pojo.SClanHall" >
+    update s_clan_hall
+    set name = #{name,jdbcType=VARCHAR},
+      name_of_a_hall = #{nameOfAHall,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      fulladdress = #{fulladdress,jdbcType=VARCHAR},
+      coordinate = #{coordinate,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      synopsis = #{synopsis,jdbcType=VARCHAR},
+      recommend = #{recommend,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_flg = #{delFlg,jdbcType=INTEGER},
+      def1 = #{def1,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      cover_image = #{coverImage,jdbcType=VARCHAR},
+      protected_flag = #{protectedFlag,jdbcType=INTEGER},
+      cover_image_thumb = #{coverImageThumb,jdbcType=VARCHAR},
+      def2 = #{def2,jdbcType=VARCHAR},
+      surname = #{surname,jdbcType=VARCHAR},
+      review = #{review,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

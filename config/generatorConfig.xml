@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+ 
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+        <!--避免生成重复代码的插件-->
+        <plugin type="com.bjp.util.OverIsMergeablePlugin" />
+ 
+        <!--是否在代码中显示注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+ 
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+        				connectionURL="jdbc:mysql://120.78.83.159:3306/seo_manage" 
+        				userId="root" 
+        				password="Aa1234">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成pojo类存放位置-->
+        <javaModelGenerator targetPackage="com.bjp.pojo" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成xml映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="config">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成mapper类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.bjp.mapper" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+ 
+        <!--生成对应表及类名-->
+        <!-- <table tableName="clan_member" domainObjectName="ClanMember" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="clan_member_id" sqlStatement="MySQL" identity="true"/>
+        </table> -->          
+        
+        <!-- <table tableName="s_content" domainObjectName="SContent" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table> -->
+        <table tableName="s_entry" domainObjectName="SEntry" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <!--
+        <table tableName="s_linkurl" domainObjectName="SLinkurl" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="s_module" domainObjectName="SModule" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="s_praise" domainObjectName="SPraise" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="s_system" domainObjectName="SSystem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="s_website" domainObjectName="SWebsite" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>        
+        <table tableName="s_wm_relation" domainObjectName="SWmRelation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="s_images" domainObjectName="SImages" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>-->
+        <table tableName="s_clan_hall" domainObjectName="SClanHall" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table> 
+        <table tableName="bbs_article" domainObjectName="BbsArticle" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="bbs_type" domainObjectName="BbsType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="bbs_comment" domainObjectName="BbsComment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table> 
+        <table tableName="m_video" domainObjectName="MVideo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table> 
+        <table tableName="m_video_comment" domainObjectName="MVideoComment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>  
+        <table tableName="s_user" domainObjectName="SUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table> 
+        <table tableName="product_info" domainObjectName="ProductInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="product_type" domainObjectName="ProductType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>
+        <table tableName="product_pic" domainObjectName="ProductPic" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <generatedKey column="id" sqlStatement="MySQL" identity="true"/>
+        </table>      
+    </context>
+</generatorConfiguration>

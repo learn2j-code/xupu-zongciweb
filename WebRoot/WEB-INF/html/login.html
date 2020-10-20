@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+<title>用AJAX以JSON方式获取数据</title>  
+<script type="text/javascript" src="html/jquery.min.js"></script>  
+</head>  
+<body>  
+	<form id="justForm">  
+	手机号：<input type="text" id="phone"/><br/> 
+	密码：<input type="text" id="password"/><br/>
+	用户id：<input type="text" id="userId"/><br/>
+       <input type="button" value="登陆" onclick="login()">
+       <input type="button" value="注册" onclick="register()"> 
+       <input type="button" value="更新" onclick="update()"> 
+       <input type="button" value="查询" onclick="find()"> 
+    </form> 
+    
+    
+    <form id= "uploadForm">  
+   	  <p >clanId：<input type="text" id="clanId"/><br/> </p >
+      <p >指定文件名： <input type="text" name="filename" value= ""/></p >  
+      <p >上传文件： <input type="file" name="file"/></ p>  
+      <input type="button" value="上传" onclick="doUpload()" />  
+	</form> 
+	
+	<form id="pageForm">  
+	世系id：<input type="text" id="genealogyId"/><br/> 
+	开始世代：<input type="text" id="startGeneration"/><br/>
+	结束世代：<input type="text" id="endGeneration"/><br/>
+       <input type="button" value="分页查询" onclick="findByGeneration()">
+    </form> 
+    
+    <div id="messageDiv"></div>  
+       
+    <script>  
+/*     $('#sender').click(function(){  
+    	var name=document.getElementById('name').value;  
+        var category={"name":name}
+        var url="addCategory";  
+        $.post(
+                url, 
+                {"data1":JSON.stringify(category)},
+                function(data) { 
+                     var json=JSON.parse(data);  
+                     var name =json.category.name;  
+                     $("#messageDiv").html("分类名称："+name );
+                      
+         });   
+    });   */ 
+    
+    function findByGeneration(){
+      	var genealogyId=document.getElementById('genealogyId').value;  
+      	var startGeneration=document.getElementById('startGeneration').value; 
+      	var endGeneration=document.getElementById('endGeneration').value; 
+        var requestParameter={"genealogyId":genealogyId,"startGeneration":startGeneration,"endGeneration":endGeneration}
+        $.ajax({
+                  type : 'post',
+                  url : 'findGenealogyMemberListByGeneration',
+                  //设置contentType类型为json
+                  contentType : 'application/json;charset=utf-8',
+                  //json数据
+                  data : JSON.stringify(requestParameter),
+                  //请求成功后的回调函数
+                  success : function(data) {
+                	  /* alert(data); */
+                	  /* var json=JSON.parse(data); */  
+                      var success =data.success;  
+                	  var errorMsg = data.errorMsg;
+                      $("#messageDiv").html("register success："+success + 
+                    		  "<br>errorMsg:" +errorMsg);           
+                  }
+        });
+    };
+    function register(){
+    	var formData = new FormData($( "#justForm" )[0]);
+      	var phone=document.getElementById('phone').value;  
+      	var password=document.getElementById('password').value; 
+        var user={"phone":phone,"password":password,"nativeName":password}  
+        var userVo = {"user":user,"userId":1}
+        $.ajax({
+                  type : 'post',
+                  url : 'userRegister',
+                  //设置contentType类型为json
+                  contentType : 'application/json;charset=utf-8',
+                  //json数据
+                  data : JSON.stringify(userVo),
+                  //请求成功后的回调函数
+                  success : function(data) {
+                	  /* alert(data); */
+                	  /* var json=JSON.parse(data); */  
+                      var success =data.success;  
+                	  var errorMsg = data.errorMsg;
+                      $("#messageDiv").html("register success："+success + 
+                    		  "<br>errorMsg:" +errorMsg);           
+                  }
+        });
+    };
+    function update(){
+    	var formData = new FormData($( "#justForm" )[0]);
+      	var phone=document.getElementById('phone').value;  
+      	var password=document.getElementById('password').value; 
+      	var userId=document.getElementById('userId').value;  
+        var user={"userId":userId,"phone":phone,"password":password,"nativeName":password}  
+        $.ajax({
+                  type : 'post',
+                  url : 'updateUser',
+                  //设置contentType类型为json
+                  contentType : 'application/json;charset=utf-8',
+                  //json数据
+                  data : JSON.stringify(user),
+                  //请求成功后的回调函数
+                  success : function(data) {
+                	  /* alert(data); */
+                	  /* var json=JSON.parse(data); */  
+                      var success =data.success;  
+                	  var errorMsg = data.errorMsg;
+                      $("#messageDiv").html("update success："+success + 
+                    		  "<br>errorMsg:" +errorMsg);           
+                  }
+        });
+    };
+    function login(){
+    	var formData = new FormData($( "#justForm" )[0]);
+      	var phone=document.getElementById('phone').value;  
+      	var password=document.getElementById('password').value; 
+        var user={"phone":phone,"password":password}  
+        $.ajax({
+                  type : 'post',
+                  url : 'userLogin',
+                  //设置contentType类型为json
+                  contentType : 'application/json;charset=utf-8',
+                  //json数据
+                  data : JSON.stringify(user),
+                  //请求成功后的回调函数
+                  success : function(data) {
+                	  /* alert(data); */
+                	  /* var json=JSON.parse(data); */  
+                      var success =data.success;  
+                	  var errorMsg = data.errorMsg;
+                      $("#messageDiv").html("login success："+success + 
+                    		  "<br>errorMsg:" +errorMsg);           
+                  }
+        });
+    };
+    function find(){
+    	var formData = new FormData($( "#justForm" )[0]);
+      	var userId=document.getElementById('userId').value;  
+        var userInput={"userId":userId}  
+        $.ajax({
+                  type : 'post',
+                  url : 'findUserById',
+                  //设置contentType类型为json
+                  contentType : 'application/json;charset=utf-8',
+                  //json数据
+                  data : JSON.stringify(userInput),
+                  //请求成功后的回调函数
+                  success : function(data) {
+                	  /* alert(data); */
+                	  /* var json=JSON.parse(data); */  
+                      var phone =data.phone;  
+                      var roleName =data.role.roleName; 
+                      $("#messageDiv").html("phone："+phone + 
+                    		  "<br>roleName:" +roleName);           
+                  }
+        });
+    };
+	
+    function doUpload() {  
+    	var clanId=document.getElementById('clanId').value;  
+        var formData = new FormData($( "#uploadForm" )[0]);  
+        formData.append('clanId',clanId);
+        $.ajax({  
+             url: 'importExcelFileToCmContent' ,  
+             type: 'POST',  
+             data: formData,  
+             async: false,  
+             cache: false,  
+             contentType: false,  
+             processData: false,  
+             success: function (returndata) {  
+                 alert(returndata);  
+             },  
+             error: function (returndata) {  
+                 alert(returndata);  
+             }  
+        });  
+   }
+    </script>  
+</body>  
+   
+</body>
+</html>

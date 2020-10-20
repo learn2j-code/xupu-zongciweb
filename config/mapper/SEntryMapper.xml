@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjp.mapper.SEntryMapper" >
+  <resultMap id="BaseResultMap" type="com.bjp.pojo.SEntry" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="module_id" property="moduleId" jdbcType="INTEGER" />
+    <result column="website_id" property="websiteId" jdbcType="VARCHAR" />
+    <result column="website_name" property="websiteName" jdbcType="VARCHAR" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="image_ftpurl" property="imageFtpurl" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="artical_abstract" property="articalAbstract" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="release_date" property="releaseDate" jdbcType="DATE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="del_flg" property="delFlg" jdbcType="INTEGER" />
+    <result column="issue" property="issue" jdbcType="INTEGER" />
+    <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+    <result column="def1" property="def1" jdbcType="VARCHAR" />
+    <result column="def2" property="def2" jdbcType="VARCHAR" />
+    <result column="def3" property="def3" jdbcType="VARCHAR" />
+    <result column="review" property="review" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.bjp.pojo.SEntry" extends="BaseResultMap" >
+    <result column="thumbnail" property="thumbnail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, module_id, website_id, website_name, image_url, image_ftpurl, title, author, 
+    source, artical_abstract, create_time, update_time, release_date, remarks, del_flg, 
+    issue, keyword, def1, def2, def3, review, nickname
+  </sql>
+  <sql id="Blob_Column_List" >
+    thumbnail
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.bjp.pojo.SEntryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_entry
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bjp.pojo.SEntryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from s_entry
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from s_entry
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_entry
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bjp.pojo.SEntry" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_entry (module_id, website_id, website_name, 
+      image_url, image_ftpurl, title, 
+      author, source, artical_abstract, 
+      create_time, update_time, release_date, 
+      remarks, del_flg, issue, 
+      keyword, def1, def2, 
+      def3, review, nickname, 
+      thumbnail)
+    values (#{moduleId,jdbcType=INTEGER}, #{websiteId,jdbcType=VARCHAR}, #{websiteName,jdbcType=VARCHAR}, 
+      #{imageUrl,jdbcType=VARCHAR}, #{imageFtpurl,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{articalAbstract,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{releaseDate,jdbcType=DATE}, 
+      #{remarks,jdbcType=VARCHAR}, #{delFlg,jdbcType=INTEGER}, #{issue,jdbcType=INTEGER}, 
+      #{keyword,jdbcType=VARCHAR}, #{def1,jdbcType=VARCHAR}, #{def2,jdbcType=VARCHAR}, 
+      #{def3,jdbcType=VARCHAR}, #{review,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
+      #{thumbnail,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bjp.pojo.SEntry" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_entry
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="moduleId != null" >
+        module_id,
+      </if>
+      <if test="websiteId != null" >
+        website_id,
+      </if>
+      <if test="websiteName != null" >
+        website_name,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="imageFtpurl != null" >
+        image_ftpurl,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="articalAbstract != null" >
+        artical_abstract,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="releaseDate != null" >
+        release_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="delFlg != null" >
+        del_flg,
+      </if>
+      <if test="issue != null" >
+        issue,
+      </if>
+      <if test="keyword != null" >
+        keyword,
+      </if>
+      <if test="def1 != null" >
+        def1,
+      </if>
+      <if test="def2 != null" >
+        def2,
+      </if>
+      <if test="def3 != null" >
+        def3,
+      </if>
+      <if test="review != null" >
+        review,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="websiteId != null" >
+        #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteName != null" >
+        #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageFtpurl != null" >
+        #{imageFtpurl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="articalAbstract != null" >
+        #{articalAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseDate != null" >
+        #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlg != null" >
+        #{delFlg,jdbcType=INTEGER},
+      </if>
+      <if test="issue != null" >
+        #{issue,jdbcType=INTEGER},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="def1 != null" >
+        #{def1,jdbcType=VARCHAR},
+      </if>
+      <if test="def2 != null" >
+        #{def2,jdbcType=VARCHAR},
+      </if>
+      <if test="def3 != null" >
+        #{def3,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        #{review,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        #{thumbnail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjp.pojo.SEntry" >
+    update s_entry
+    <set >
+      <if test="moduleId != null" >
+        module_id = #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="websiteId != null" >
+        website_id = #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteName != null" >
+        website_name = #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageFtpurl != null" >
+        image_ftpurl = #{imageFtpurl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="articalAbstract != null" >
+        artical_abstract = #{articalAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseDate != null" >
+        release_date = #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlg != null" >
+        del_flg = #{delFlg,jdbcType=INTEGER},
+      </if>
+      <if test="issue != null" >
+        issue = #{issue,jdbcType=INTEGER},
+      </if>
+      <if test="keyword != null" >
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="def1 != null" >
+        def1 = #{def1,jdbcType=VARCHAR},
+      </if>
+      <if test="def2 != null" >
+        def2 = #{def2,jdbcType=VARCHAR},
+      </if>
+      <if test="def3 != null" >
+        def3 = #{def3,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        review = #{review,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail = #{thumbnail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bjp.pojo.SEntry" >
+    update s_entry
+    set module_id = #{moduleId,jdbcType=INTEGER},
+      website_id = #{websiteId,jdbcType=VARCHAR},
+      website_name = #{websiteName,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      image_ftpurl = #{imageFtpurl,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      artical_abstract = #{articalAbstract,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      release_date = #{releaseDate,jdbcType=DATE},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flg = #{delFlg,jdbcType=INTEGER},
+      issue = #{issue,jdbcType=INTEGER},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      def1 = #{def1,jdbcType=VARCHAR},
+      def2 = #{def2,jdbcType=VARCHAR},
+      def3 = #{def3,jdbcType=VARCHAR},
+      review = #{review,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      thumbnail = #{thumbnail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjp.pojo.SEntry" >
+    update s_entry
+    set module_id = #{moduleId,jdbcType=INTEGER},
+      website_id = #{websiteId,jdbcType=VARCHAR},
+      website_name = #{websiteName,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      image_ftpurl = #{imageFtpurl,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      artical_abstract = #{articalAbstract,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      release_date = #{releaseDate,jdbcType=DATE},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flg = #{delFlg,jdbcType=INTEGER},
+      issue = #{issue,jdbcType=INTEGER},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      def1 = #{def1,jdbcType=VARCHAR},
+      def2 = #{def2,jdbcType=VARCHAR},
+      def3 = #{def3,jdbcType=VARCHAR},
+      review = #{review,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

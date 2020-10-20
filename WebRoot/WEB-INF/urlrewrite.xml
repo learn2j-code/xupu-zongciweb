@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN"
+        "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<urlrewrite>
+	<rule>
+	    <note>重写index.jsp成index.html</note>
+	    <note>example：/index.html</note>
+	    <from>/index.html</from>
+	    <to type="forward">/index</to>
+	</rule>
+	
+	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/wenzhang/274</note>
+	    <from>/wenzhang/([0-9]+)</from>
+	    <to type="forward">/news/articleDetail?id=$1</to>
+  	</rule>
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/wenzhang</note>
+	    <from>/wenzhang</from>
+	    <to type="forward">/news</to>
+  	</rule>
+  	
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/ditu</note>
+	    <from>/ditu</from>
+	    <to type="forward">/clanHallMap</to>
+  	</rule>
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/citang/274</note>
+	    <from>/citang/([0-9]+)</from>
+	    <to type="forward">/citang/citangDetail?id=$1</to>
+  	</rule>
+  	
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/luntan/274</note>
+	    <from>/luntan/([0-9]+)</from>
+	    <to type="forward">/messageDetail?id=$1</to>
+  	</rule>
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/luntans/1/6</note>
+	    <from>/luntans/([0-9]+)/([0-9]+)</from>
+	    <to type="forward">/messageBorad?start=$1&amp;count=$2</to>
+  	</rule>
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/luntans</note>
+	    <from>/luntans</from>
+	    <to type="forward">/messageBorad?start=1&amp;count=6</to>
+  	</rule>
+  	
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/shipin/274</note>
+	    <from>/shipin/([0-9]+)</from>
+	    <to type="forward">/videoDetail?id=$1</to>
+  	</rule>
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/shipins/1/6</note>
+	    <from>/shipins/([0-9]+)/([0-9]+)</from>
+	    <to type="forward">/videoList?start=$1&amp;count=$2</to>
+  	</rule>
+	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/shipins</note>
+	    <from>/shipins</from>
+	    <to type="forward">/videoList?start=1&amp;count=8</to>
+  	</rule>
+  	
+  	<rule>
+	    <note>forward(转发模式)传参</note>
+	    <note>example：/baijiaxing/274</note>
+	    <from>/baijiaxing/([0-9]+)</from>
+	    <to type="forward">/baijiaxingDetail?id=$1</to>
+  	</rule>
+</urlrewrite>

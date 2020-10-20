@@ -1,0 +1,561 @@
+.clanhall-header{
+	height: 3.8rem;
+	background: #A37042;
+	line-height: 3.8rem;
+}
+.clanhall-header-head{
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+}
+.clanhall-header-head .user{
+	width: 3.57142rem;
+}
+.clanhall-header-head .search{
+	width: 3.57142rem;
+}
+.clanhall-header-head .title{
+	width: 4.2142rem;
+	height: 1.3571rem;
+	margin: 0 auto;
+}
+.clanhall-header-head .title > img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-nav{
+	overflow-x: auto;
+}
+.clanhall-nav-wrap{
+	margin: 0;
+	padding: 0;
+	background: #F8F8F8;
+	height: 4.0714rem;
+	white-space: wrap;
+	width: 150%;
+}
+.clanhall-nav-wrap li{
+	list-style: none;
+	float: left;
+	text-align: center;
+	line-height: 4.0714rem;
+	padding: 0 10px;
+}
+.clanhall-nav-wrap li a:link,.clanhall-nav-wrap li a:hover,.clanhall-nav-wrap li a:visited,.clanhall-nav-wrap li a:active{
+	font-size: 18px;
+	color: #333233;
+	text-decoration: none;
+}
+.swiper-container{
+	width: 26.78571rem;
+	height: 12.85714rem;
+}
+.swiper-wrapper{
+	width: 100%;
+	height: 100%;
+}
+.swiper-wrapper .swiper-slide{
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide img{
+	width: 100%;
+	height: 100%;
+}
+.section-title{
+	color: #333233;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 15px 0;
+}
+.clanhall-info-list{
+	border-bottom: 1px solid #eee;
+	padding: 10px 0;
+}
+.clanhall-info-list:last-child{
+	border-bottom: 1px solid #fff;
+}
+.clanhall-info-list .pic{
+	width: 8.92857rem;
+	height: 6.42857rem;
+}
+.clanhall-info-list .pic img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-info-list .title{
+	color: #333233;
+	font-size: 16px;
+}
+.clanhall-info-list .desc{
+	margin-top: 10px;
+	color:#777777;
+	font-size: 14px;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.clanhall-more-btn{
+	border: none;
+	height: 3.07142rem;
+	background: #fff;
+	line-height: 3.07142rem;
+	color: #A37042;
+	font-size: 16px;
+	text-align: center;
+}
+.cur-off-rule{
+	height: 15px;
+	background: #F8F8F8;
+}
+.clanhall-show-list{
+	border-bottom: 1px solid #eee;
+	padding: 10px 0;
+}
+.clanhall-show-list:last-child{
+	border-bottom: 1px solid #fff;
+}
+.clanhall-show-list .title{
+	color: #333233;
+	font-size: 16px;
+}
+.clanhall-show-list .content{
+	color: #777777;
+	font-size: 14px;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.clanhall-show-list .address{
+	color: #CACACA;
+	font-size: 12px;
+}
+.clanhall-show-list .pic{
+	width: 8.92857rem;
+	height: 6.42857rem;
+}
+.clanhall-show-list .pic > img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-video-list{
+	padding: 15px 0;
+	width: 25.0714rem;
+	height: 16.28571rem;
+}
+.clanhall-video-list > img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-video-list .title{
+	display: block;
+	color: #333;
+	font-size: 14px;
+	text-align: left;
+}
+.clanhall-friend-link{
+	margin: 0;
+	padding: 10px 0;
+}
+.clanhall-friend-link li{
+	list-style: none;
+	float: left;
+	width: 4.8rem;
+	margin: 10px 8px;
+}
+.clanhall-friend-link li a:link,.clanhall-friend-link li a:hover,.clanhall-friend-link li a:visited,.clanhall-friend-link li a:active{
+	color: #555555;
+	font-size: 14px;
+}
+.clanhall-contacts-wrap{
+	width: 17.87rem;
+	margin: 18px auto;
+}
+.clanhall-contacts-wrap > div {
+	text-align: center;
+}
+.clanhall-contacts-wrap > div .methods{
+	width: 7rem;
+	height: 7rem;
+	margin: 0 auto;
+}
+.clanhall-contacts-wrap > div .methods > img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-address{
+	color:#C3C2C2;
+	font-size: 12px;
+}
+.clanhall-crop-info{
+	color:#C3C2C2;
+	font-size: 12px;
+}
+.clanhall-header .title-head{
+	position: relative;
+	color: #fff;
+	text-align: center;
+	height: 100%;
+	padding-top: 5px;
+}
+.clanhall-header .title-head span{
+	display: block;
+	width: 4.2142rem;
+	height: 1.3571rem;
+	margin: 0 auto;
+}
+.clanhall-header .title-head span > img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-header .title-head i{
+	position: absolute;
+	font-size: 20px;
+	right: 15px;
+	top: 16px;
+}
+.clanhall-show-list{
+	flex-wrap: wrap;
+}
+.clanhall-show-list > div .pic{
+	width: 11.01rem;
+	height: 10.4285rem;
+}
+.clanhall-show-list > div .pic img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-show-list > div{
+	margin: 5px 5px;
+}
+.clanhall-show-list > div .title{
+	display: block;
+	color: #333233;
+	font-size: 16px;
+	margin: 5px 0;
+}
+.clanhall-search-wrap{
+	background: rgb(248,248,248);
+	padding: 10px 20px;
+	border-top: 1px solid #eee;
+}
+.clanhall-search-input{
+	height: 35px;
+	background: #fff;
+	border: 1px solid #E7E7E7;
+	border-radius: 3px;
+}
+.clanhall-search-wrap > div{
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+.clanhall-search-wrap > div .clanhall-search-input{
+	width: 97%;
+	padding-left: 30px;
+	outline: none;
+}
+.clanhall-search-wrap  .search-icon{
+	position: absolute;
+	top: 11px;
+	left: 6px;
+	color: #999999;
+	font-size: 16px;
+}
+.clanhall-hall-list{
+	padding: 15px 0;
+	border-bottom: 1px solid #eee;
+}
+.clanhall-hall-list .icon{
+	width: 2.5rem;
+	text-align: center;
+}
+.clanhall-hall-list .icon i{
+	font-size: 20px;
+	color: #E4E4E4;
+	margin-top: 8px;
+}
+.clanhall-hall-list .title{
+	font-size: 16px;
+	color: #222222;
+	margin: 10px 0;
+}
+.clanhall-hall-list .contacts{
+	margin: 0;
+	padding: 0;
+}
+.clanhall-hall-list .contacts > li{
+	list-style: none;
+	color: #999999;
+	font-size: 14px;
+	margin: 10px 0px;
+}
+.clanhall-content img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-detail-contacts{
+	background: #EEEEEE;
+	padding: 15px;
+}
+.clanhall-detail-contacts ul{
+	margin: 0;
+	padding: 0;
+}
+.clanhall-detail-contacts ul li{
+	list-style: none;
+	color: #777777;
+	margin: 10px 0;
+}
+.clanhall-video-date{
+	font-size: 12px;
+	color: #555555;
+}
+.clanhall-video-user{
+	font-size: 12px;
+	color: #555555;
+	margin-left: 25px;
+}
+.clanhall-video-comment-textarea{
+	width: 100%;
+	background: #F0F0F0;
+	border: 1px solid #B5B5B5;
+	border-radius: 3px;
+	height: 6.428rem;
+	resize: none;
+}
+.clanhall-video-btn-wrap span{
+	font-size: 16px;
+	color: #ACABAB;
+	display: block;
+	float: left;
+	height: 2.4285rem;
+	line-height: 2.4285rem; 
+}
+.clanhall-video-btn-wrap button{
+	display: block;
+	float: right;
+	background: #F0F0F0;
+	border: 1px solid #B5B5B5;
+	font-size: 16px;
+	text-align: center;
+	line-height: 2.4285rem;
+	height: 2.4285rem;
+	border-radius: 3px;
+	width: 5.3571rem;
+	color: #555555;
+}
+.clanhall-video-comment-list{
+
+}
+.clanhall-video-comment-list .username{
+	font-size: 16px;
+	color: #333333;
+}
+.clanhall-video-comment-list .time{
+	color: #ACABAB;
+	font-size: 14px;
+}
+.clanhall-video-comment-content{
+	color: #333333;
+	font-size: 16px;
+	margin: 15px 0 0 0;
+}
+.clanhall-video-comment-list .zan{
+	color: #999999;
+	font-size: 16px;
+}
+.clanhall-video-comment-btn{
+	line-height: 2.4285rem;
+	height: 2.4285rem;
+}
+.clanhall-video-comment-btn .comment-btn{
+	color: #999999;
+	font-size: 16px;
+}
+.clanhall-lyb-tab{
+	flex-wrap: wrap;
+	background: #fff;
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+}
+.clanhall-lyb-tab > div{
+	flex: none;
+	width: 3.5714rem;
+	text-align: center;
+	font-size: 16px;
+	color: #888888;
+	margin: 5px 10px;
+}
+.clanhall-lyb-tab > div.active{
+	color: #333233;
+}
+.clanhall-lyb-list{
+
+}
+.clanhall-lyb-list .username{
+ 	font-size: 16px;
+ 	color: #333;
+}
+.clanhall-lyb-list .user-img{
+	margin-right: 15px;
+}
+.clanhall-lyb-list .user-img span{
+	display: inline-block;
+	width: 2.85714rem;
+	height: 2.8674rem;
+	border-radius: 50%;
+	background: #ccc;
+}
+.clanhall-lyb-list .date{
+	font-size: 14px;
+	color: #ACABAB;
+}
+.clanhall-lyb-list .content{
+	font-size: 16px;
+	color: #333333;
+}
+.clanhall-lyb-list .content-img{
+	width: 100%;
+	height: 13.92857rem;
+}
+.clanhall-lyb-list .content-img > img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-lyb-list .status{
+	color: #999999;
+	font-size: 16px;
+}
+.clanhall-lyb-list .info{
+	color: #999999;
+	font-size: 16px;
+}
+.clanhall-lyb-add-btn{
+	position: fixed;
+	right: 3rem;
+	bottom: 3rem;
+}
+.clanhall-lyb-add-btn > a{
+	display: block;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background: rgb(153,153,153);
+	color: #fff;
+	text-align: center;
+	line-height: 4rem;
+}
+.clanhall-lyb-add-btn > a > i{
+	font-size: 30px;
+}
+.clanhall-lyb-submit{
+	position: fixed;
+	bottom:0;
+	left: 0;
+	height: auto;
+	background: #fff;
+	border-top: 1px solid #DEDDDD;
+	width: 100%;
+}
+.clanhall-lyb-submit p{
+	color: #777777;
+	font-size: 16px;
+	height: 3.2857rem;
+	line-height: 3.2857rem;
+	margin: 0px 0px 0px 15px;
+}
+.clanhall-submit-lyb-title{
+	height: 4rem;
+	border-bottom: 1px solid #eee;
+	line-height: 4rem;
+}
+.clanhall-submit-lyb-title > .close{
+	width: 3.57142rem;
+	text-align: center;
+	font-size: 20px;
+	line-height: 4rem;
+}
+.clanhall-submit-lyb-title > .title{
+	color: #000000;
+	font-size: 18px;
+	text-align: center;
+}	
+.clanhall-submit-lyb-title > .submit{
+	width: 3.57142rem;
+	text-align: center;
+}
+.clanhall-submit-lyb-title > .submit > a:link,.clanhall-submit-lyb-title > .submit > a:hover, .clanhall-submit-lyb-title > .submit > a:visited,.clanhall-submit-lyb-title > .submit > a:active{
+	text-decoration: none;
+	font-size: 16px;
+	color: #2283FA;
+}
+.clanhall-select-theme{
+	color: #C7C6C6;
+	font-size: 16px;
+}
+.clanhall-select-theme i{
+	position: relative;
+	left: 5px;
+	top: 3px;
+}
+.clanhall-submit-lyb-input{
+	width: 100%;
+	height: 2.5rem;
+	border: none!important;
+}
+.clanhall-submit-lyb-textarea{
+	border: none;
+}
+.clanhall-lyb-submit-img{
+	width: 5.7142rem;
+	height: 5.7142rem;
+	background: #fff;
+	border: 1px dashed #eee;
+	text-align: center;
+	line-height: 6.7142rem;
+	margin-left: 10px;
+	float: left;
+}
+.clanhall-lyb-submit-img i{
+	font-size: 34px;
+	color: #D2D2D2;
+}
+.clanhall-lyb-img{
+	float: left;
+	flex-wrap: wrap;
+}
+.clanhall-lyb-img > div{
+	position: relative;
+	flex: none!important;
+	width: 5.7142rem;
+	height: 5.7142rem;
+}
+.clanhall-lyb-img > div > img{
+	width: 100%;
+	height: 100%;
+}
+.clanhall-lyb-img > div > i{
+	position: absolute;
+	right: 3px;
+	top: 0;
+	color: #fff;
+	font-size: 20px;
+}
+.clanhall-detail-banner{
+	height: 16.85714rem;
+}
+.clanhall-detail-banner .swiper-wrapper{
+	height: 14.85714rem
+}
+.clanhall-detail-banner .swiper-pagination{
+	bottom: 0px;
+}
+#clanHallMap{
+	width: 32.428rem;
+	height: 20.3571rem;
+}

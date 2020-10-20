@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../css/public.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<style type="text/css">
+</style>
+<body>
+		<header class="clanhall-header">
+			<div class="title-head" style="padding-top: 0px;">
+				<span><img src="../images/title.png"></span>
+				<i class="fa fa-search"></i>
+			</div>
+		</header>
+		<nav class="clanhall-nav">
+			<ul class="clanhall-nav-wrap">
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="clanHallInfo.html">宗祠资讯</a></li>
+				<li><a href="clanHallMap.html">宗祠地图</a></li>
+				<li><a href="clanHallShow.html">古祠赏析</a></li>
+				<li><a href="javascript:void(0)">留言板</a></li>
+				<li><a href="javascript:void(0)">古祠视频</a></li>
+			</ul>
+		</nav>
+		<div class="clanhall-search-wrap">
+			<div>
+				<input type="text" class="clanhall-search-input" placeholder="请输入祠堂名字或地址" id="searchName">
+				<i class="glyphicon glyphicon-search search-icon" id="searchBtn"></i>
+			</div>
+		</div>
+		<div id="clanHallMap">
+			<img src="../images/map.png" alt="">
+		</div>
+		<main class="ph15">
+			<div class="js-clanhall-list">
+				<!--<div class="flex clanhall-hall-list">
+					<div class="icon clearflex"><i class="glyphicon glyphicon-map-marker"></i></div>
+					<div>
+						<h5 class="title">厦门甘露寺</h5>
+						<ul class="contacts">
+							<li><span>地&ensp;&ensp;址:</span><span>&ensp;湖南省长沙市岳麓区红谷中大道998号</span></li>
+							<li><span>电&ensp;&ensp;话:</span><span>&ensp;0566-2812225</span></li>
+							<li><span>联系人:</span><span>&ensp;主格了</span></li>
+						</ul>
+					</div>
+				</div>-->
+				<p style="margin-top: 15px;color: #dbdbdb;text-align: center;font-size: 14px;"><i class="fa fa-exclamation-circle" style="margin-right: 3px;font-size: 14px;"></i>有点小尴尬,暂无查询结果</p>
+			</div>
+		</main>	
+		<script type="text/javascript" src="../js/public/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../js/public/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.6&key=67e175805065f1bd8103b4444d9cfb6b&plugin=AMap.Geocoder"></script>
+		<script type="text/javascript" src="../js/public/common.js"></script>
+		<script type="text/javascript" src="../js/clanHallMap/clanHallMap.js"></script>
+</body>
+</html>

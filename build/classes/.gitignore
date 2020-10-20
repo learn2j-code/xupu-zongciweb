@@ -1,0 +1,9 @@
+/applicationContext.xml
+/com/
+/config.properties
+/dict/
+/generatorConfig.xml
+/log4j.properties
+/mapper/
+/springMVC.xml
+/web.xml
